@@ -6,11 +6,11 @@
  */
 
 #include "SDL/SDL.h"
-#include "SDL/SDL_ttf.h"
 #include "Button.h"
-#include <string>
 
-Button::Button(int x, int y, std::string message) {
+namespace GBEAR {
+
+Button::Button(int x, int y) {
     normal = NULL;
     active = NULL;
     pressed = NULL;
@@ -31,10 +31,10 @@ bool Button::check_hover(int x, int y) {
 
 	if ((relX > 0) && (relY > 0) && (relX < mask.w) && (relY < mask.h))
 		return true;
-	else return false;
+	return false;
 }
 
-void Button::render() {
+void Button::render(SDL_Surface *screen) {
 	switch (current_state) {
 	case NORMAL:
 		apply_surface(mask.x, mask.y, normal, screen);
@@ -53,10 +53,11 @@ void Button::render() {
 	apply_surface(text_position.x, text_position.y, text, screen);
 }
 
-void Button::change_state(eButtonState newState) {
+void Button::change_state(Button::State newState) {
 	current_state = newState;
 }
 
-eButtonState Button::get_state() {
+Button::State Button::get_state() {
 	return current_state;
+}
 }
