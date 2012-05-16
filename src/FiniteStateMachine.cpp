@@ -1,4 +1,4 @@
-#include "FiniteStateMachine.h"
+#include "glowingbear/FiniteStateMachine.h"
 
 namespace GBEAR {
 

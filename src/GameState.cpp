@@ -1,15 +1,7 @@
-/*
- * GameState.cpp
- *
- *  Created on: Feb 9, 2012
- *      Author: Harry
- */
-
 #include "SDL/SDL.h"
-#include "GameState.h"
-#include "event.h"
-#include "fsm.h"
-#include "types.h"
+#include "glowingbear/GameState.h"
+
+namespace GBEAR {
 
 GameState::~GameState(){}
 
@@ -44,3 +36,4 @@ void GameState::handle_events(){
 }
 void GameState::do_logic(){}
 void GameState::render(){}
+}
