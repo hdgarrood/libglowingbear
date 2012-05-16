@@ -1,34 +1,32 @@
-/*
- * FiniteStateMachine.cpp
- *
- *  Created on: Feb 9, 2012
- *      Author: Harry
- */
-
 #include "FiniteStateMachine.h"
 
-Finite_State_Machine::Finite_State_Machine() {
+namespace GBEAR {
+
+FiniteStateMachine::FiniteStateMachine() {
 	currentStateID = STATE_NULL;
 	nextStateID = STATE_NULL;
 	currentState = NULL;
 }
 
-void Finite_State_Machine::set_next_state(int newState) {
+// call this whenever; the FSM won't actually change state until the end
+// of the loop
+void FiniteStateMachine::set_next_state(int newState) {
     nextStateID = newState;
 }
 
-void Finite_State_Machine::change_state() {
+// this should only be called at the end of the game's main loop.
+void FiniteStateMachine::change_state() {
     if (nextStateID != STATE_NULL) {
         delete currentState;
-        // the idea here is that a subclass will override the unordered
-        // mapping of state IDs to classes to define which new state to
-        // instantiate.
-        
+        // get_new_state should be overriden by a subclass and
+        // return a pointer to a new GameState
+        currentState = get_new_state(nextStateID);
         currentStateID = nextStateID;
         nextStateID = STATE_NULL;
     }
 }
 
-int Finite_State_Machine::get_current_state() {
+int FiniteStateMachine::get_current_state() {
 	return currentStateID;
+}
 }

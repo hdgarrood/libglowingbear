@@ -1,15 +1,10 @@
-/*
- * FiniteStateMachine.h
- *
- *  Created on: Feb 9, 2012
- *      Author: Harry
- */
-
 #ifndef FINITESTATEMACHINE_H_
 #define FINITESTATEMACHINE_H_
 
 #include "SDL/SDL.h"
-#include "GameState.h"
+#include "glowingbear/GameState.h"
+
+namespace GBEAR {
 
 class FiniteStateMachine {
 public:
@@ -23,5 +18,7 @@ private:
 	int currentStateID;
 	int nextStateID;
 };
+
+}
 
 #endif /* FINITESTATEMACHINE_H_ */
