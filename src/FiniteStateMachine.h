@@ -9,13 +9,12 @@
 #define FINITESTATEMACHINE_H_
 
 #include "SDL/SDL.h"
-#include "constants.h"
 #include "GameState.h"
 
-class Finite_State_Machine {
+class FiniteStateMachine {
 public:
-	Finite_State_Machine();
-    virtual ~Finite_State_Machine() = 0;
+	FiniteStateMachine();
+    virtual ~FiniteStateMachine() = 0;
 	virtual void set_next_state(int newState);
 	virtual void change_state();
 	virtual GameState get_current_state();

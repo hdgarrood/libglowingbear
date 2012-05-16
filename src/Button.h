@@ -9,7 +9,8 @@
 #define BUTTON_H_
 
 #include "SDL/SDL.h"
-#include <string>
+
+namespace GBEAR {
 
 class Button {
 public:
@@ -18,10 +19,10 @@ public:
         ACTIVE,
         PRESSED
     };
-	virtual Button(int x, int y, std::string message);
+	Button(int x, int y);
 	virtual ~Button();
-    virtual bool check_hover(int x, int y);
-	virtual void render();
+    bool check_hover(int x, int y);
+	virtual void render(SDL_Surface *screen);
 	virtual void change_state(State newState);
 	virtual State get_state();
 private:
@@ -29,5 +30,7 @@ private:
 	SDL_Rect mask;
 	State current_state;
 };
+
+}
 
 #endif /* BUTTON_H_ */
